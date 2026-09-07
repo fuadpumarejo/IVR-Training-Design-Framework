@@ -21,6 +21,19 @@ body {
 
 .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.25rem; }
 .home-card { background: #f7f7f5; border: 1px solid #e2e2de; border-radius: 12px; padding: 1.1rem; }
+.home-intent { font-size: 13px; line-height: 1.6; color: #444; background: #f7faf7; border-left: 3px solid #27500a;
+  border-radius: 0 8px 8px 0; padding: 12px 14px; margin-bottom: 16px; }
+.home-guidelines { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.gl-row { font-size: 12.5px; line-height: 1.5; color: #333; background: #fff; border: 1px solid #e2e2de;
+  border-radius: 8px; padding: 9px 12px; display: block; width: 100%; text-align: left;
+  font-family: inherit; cursor: pointer; position: relative; transition: border-color .12s, background .12s; }
+.gl-row:hover { border-color: #2b5f8e; background: #f7faff; }
+.gl-row:hover .gl-more { opacity: 1; transform: translateX(2px); }
+.gl-row:focus-visible { outline: 2px solid #2b5f8e; outline-offset: 2px; }
+.gl-more { display: inline-block; font-size: 18px; font-weight: 700; color: #2b5f8e; float: right; opacity: .45; transition: opacity .12s, transform .12s; line-height: 1.3; }
+.gl-tag { display: inline-block; font-size: 10px; font-weight: 700; color: #2b5f8e; background: #e8f1f9;
+  padding: 2px 7px; border-radius: 99px; margin-right: 8px; }
+.gi-text { font-size: 13.5px; line-height: 1.65; color: #333; margin-bottom: 1.2rem; }
 .home-card .icon { font-size: 22px; color: #2b5f8e; display: block; margin-bottom: 8px; }
 .home-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
 .home-card p { font-size: 12.5px; color: #6a6a6a; }
@@ -79,6 +92,10 @@ body {
   font-size: 9.5px; font-weight: 700; color: #8b4a00; background: #fdf2e3;
   padding: 2px 7px; border-radius: 99px; text-transform: uppercase; letter-spacing: .3px;
 }
+.field-tag-guideline {
+  font-size: 9.5px; font-weight: 700; color: #2b5f8e; background: #e8f1f9;
+  padding: 2px 7px; border-radius: 99px; letter-spacing: .3px; margin-right: 6px;
+}
 .field-hint { font-size: 12px; color: #999; margin-bottom: 12px; }
 .field-evidence { font-size: 11px; color: #8b6a2e; font-style: italic; margin-bottom: 12px; }
 .options { display: grid; gap: 8px; }
@@ -102,6 +119,41 @@ body {
 .dot:hover { background: #a0a09a; }
 .dot:focus-visible { outline: 2px solid #2b5f8e; outline-offset: 2px; }
 .dot.active { background: #2b5f8e; width: 20px; border-radius: 99px; }
+.dot-flagged:not(.active) { background: #d99a9a; }
+
+.view-row { margin-bottom: 1.4rem; }
+.guided-panel { max-width: 100%; }
+.guided-progress { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.guided-count { font-size: 12px; color: #999; font-weight: 700; }
+.guided-nav { display: flex; justify-content: space-between; margin-top: 14px; }
+.guided-empty { font-size: 13px; color: #999; padding: 1rem 0; }
+
+/* ── Dashboard grid ── */
+.gd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+@media (max-width: 900px) { .gd-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .gd-grid { grid-template-columns: 1fr; } }
+.gd-tile {
+  text-align: left; border-radius: 12px; padding: .95rem 1rem; cursor: pointer;
+  font-family: inherit; border: 1px solid; transition: transform .12s, box-shadow .12s;
+  display: flex; flex-direction: column; gap: 7px; min-height: 128px;
+}
+.gd-tile:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+.gd-tile:focus-visible { outline: 2px solid #2b5f8e; outline-offset: 2px; }
+.gd-tile.crit { background: #fdf1f1; border-color: #e3a3a3; }
+.gd-tile.mod  { background: #fdf6ea; border-color: #e8c987; }
+.gd-tile.ok   { background: #f0f7f1; border-color: #a8d4b0; }
+.gd-tile-top { display: flex; align-items: center; gap: 8px; }
+.gd-tile-icon { width: 26px; height: 26px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.gd-tile-id { font-size: 11px; font-weight: 700; color: #6a6a6a; letter-spacing: .3px; }
+.gd-tile-sev { margin-left: auto; font-size: 9.5px; font-weight: 700; padding: 2px 7px; border-radius: 99px; text-transform: uppercase; letter-spacing: .3px; }
+.gd-tile.crit .gd-tile-sev { background: #d94f4f; color: #fff; }
+.gd-tile.mod .gd-tile-sev { background: #d99a2b; color: #fff; }
+.gd-tile.ok .gd-tile-sev { background: #3f9153; color: #fff; }
+.gd-tile-name { font-size: 13.5px; font-weight: 700; color: #1a1a1a; line-height: 1.3; }
+.gd-tile-snippet { font-size: 11.5px; color: #6a6a6a; line-height: 1.4; flex-grow: 1; }
+.gd-tile-score { font-size: 10.5px; color: #999; margin-top: auto; }
+.gd-legend { display: flex; gap: 16px; align-items: center; margin: 4px 0 1.1rem; font-size: 11.5px; color: #6a6a6a; flex-wrap: wrap; }
+.gd-legend-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-right: 5px; }
 
 .context-summary { display: grid; grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); gap: 8px; margin-bottom: 1.75rem; }
 .ctx-chip { background: #f7f7f5; border: 1px solid #e2e2de; border-radius: 8px; padding: 8px 10px; }
@@ -141,6 +193,13 @@ body {
 }
 .ws-eyebrow { font-size: 11px; font-weight: 700; color: #2b5f8e; letter-spacing: .3px; margin-bottom: 3px; }
 .ws-head h2 { font-size: 18px; font-weight: 700; margin: 0; }
+.ws-back {
+  background: transparent; border: 1px solid #d5d5d0; border-radius: 7px; font-size: 12px;
+  color: #2b5f8e; font-weight: 700; cursor: pointer; padding: 6px 11px; font-family: inherit;
+  flex-shrink: 0; margin-top: 1px;
+}
+.ws-back:hover { background: #f2f6fa; border-color: #2b5f8e; }
+.ws-back:focus-visible { outline: 2px solid #2b5f8e; outline-offset: 2px; }
 .ws-close {
   margin-left: auto; background: transparent; border: none; font-size: 26px;
   line-height: 1; color: #999; cursor: pointer; padding: 0 4px; font-family: inherit;
@@ -243,6 +302,8 @@ body {
   padding: 8px 11px; margin-bottom: 9px; line-height: 1.5;
 }
 .g-dep-warn strong { color: #8b4a00; }
+.g-dep-link { color: #8b4a00; text-decoration: underline; font-weight: 700; }
+.g-dep-link:hover { color: #6a3800; }
 .g-dep {
   font-size: 11.5px; color: #6a6a6a; padding: 7px 0 9px;
   border-top: 1px dashed #e8e8e4; margin-bottom: 4px; line-height: 1.55;
@@ -267,6 +328,15 @@ body {
 .limits-panel[open] summary::before { content: '▾ '; }
 .limits-list { margin: 10px 0 0; padding-left: 1.15rem; }
 .limits-list li { font-size: 12px; line-height: 1.6; margin-bottom: 8px; color: #4a4a4a; }
+.g-details { margin-top: 10px; border-top: 1px solid #e8e5e0; padding-top: 2px; }
+.g-details summary {
+  cursor: pointer; font-weight: 700; color: #2b5f8e; list-style: none;
+  padding: 8px 0; font-size: 12.5px; display: flex; align-items: center; gap: 6px;
+}
+.g-details summary::-webkit-details-marker { display: none; }
+.g-details summary::before { content: '▸'; font-size: 11px; }
+.g-details[open] summary::before { content: '▾'; }
+.g-details summary .g-details-sub { font-weight: 400; color: #999; margin-left: 2px; }
 .artifact-stamp {
   font-size: 10.5px; color: #999; line-height: 1.6;
   padding: .5rem 0 0; text-align: center;
@@ -290,6 +360,13 @@ body {
   cursor: pointer; text-decoration: underline;
 }
 .resume-link:hover { color: #234d75; }
+
+.save-mid-row { text-align: center; margin-top: 14px; }
+.save-mid-link {
+  background: transparent; border: none; font-family: inherit; font-size: 11.5px;
+  color: #999; cursor: pointer; text-decoration: underline; padding: 4px;
+}
+.save-mid-link:hover { color: #2b5f8e; }
 
 /* ── Full design brief ── */
 #briefHost { max-width: 940px; margin: 0 auto; padding: 0 1.25rem 4rem; }
@@ -339,7 +416,7 @@ body {
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   .brief-bar, .nav, .filter-row, .ws-open, .data-table-toggle summary,
-  .resume-link, .ctx-edit { display: none !important; }
+  .resume-link, .ctx-edit, .save-mid-row { display: none !important; }
   .data-table-toggle[open] table, .data-table-toggle table { display: table !important; }
   #briefHost { padding: 0; max-width: none; }
   .brief-guideline, .ws-table, .g-card { page-break-inside: avoid; break-inside: avoid; }
@@ -616,18 +693,19 @@ const DEPENDS = {
 const SCORING = {
   formula: 'Priority = corpus gap prevalence ± context adjustment',
   detail: 'Each guideline starts at its gap prevalence across the 20-study corpus (45–90). ' +
-          'If your answers match that gap, +12 (capped at 100). If they do not, −25 (floored at 20). ' +
-          'The score ranks attention for your context; it is not a quality grade.',
+          'If your answers match that gap, +12 (capped at 100). If they do not, the score drops ' +
+          'to a low band (10–45) that stays below every possible “worth reviewing” score — so a ' +
+          'guideline flagged for you always outranks one that is not, regardless of how common ' +
+          'that gap is in the wider literature. The score ranks attention for your context; it is ' +
+          'not a quality grade.',
 };
 
 // Scope and limitations of the evidence base, disclosed in the artifact itself
 // rather than only in the thesis.
 const LIMITS = [
-  'The eight guidelines were derived in <strong>Cycle 1</strong> (systematic review); <strong>this tool is the Cycle 2 artefact</strong> that puts them into practice. Neither has yet been validated by domain experts or applied in a live design project \u2014 that is what Cycle 2 evaluation and Cycle 3 application are for.',
-  'The corpus is <strong>20 studies</strong> published 2020\u20132026 and indexed in Scopus, Web of Science, and IEEE Xplore. A different search protocol, date range, or set of databases could yield a different set of gaps.',
-  'The search accepted publications in <strong>English, Spanish, and Portuguese</strong>. All 20 studies that met the full inclusion criteria happened to be published in English, so design knowledge published in other languages \u2014 or outside these three databases \u2014 may be underrepresented.',
-  'All coding was done by a <strong>single researcher</strong>. This is compensated for by a verbatim evidence trail, not by inter-rater reliability statistics.',
-  'Prevalence percentages describe <strong>how often a gap appears in that corpus</strong> \u2014 they are not effect sizes and do not predict outcomes for any individual project.',
+  'Based on <strong>20 peer-reviewed studies</strong> (2020–2026) — not the whole literature. A different search could surface different gaps.',
+  'Coded by a <strong>single researcher</strong>. Every guideline is backed by a documented evidence trail rather than a second opinion.',
+  'These guidelines come from <strong>analysing published research</strong>, not yet from testing with practitioners in the field — that validation is the next phase.',
 ];
 
 // ── DATA: 8 guidelines, corpus gap prevalence (from SAM, Cycle 1, n=20) ──
@@ -653,8 +731,8 @@ const EXAMPLES = {
         good:'Practice \u2192 Guided \u2192 Independent \u2192 Final Check, with a clear rule for moving between stages.' },
   G4: { poor:'Press a button to "turn the valve" \u2014 no relationship between the button and the real motion.',
         good:'Grip and physically rotate the controller to turn the valve, just like the real one.' },
-  G5: { poor:'A red flash on error, then nothing \u2014 no way to review what happened afterward.',
-        good:'Red flash in the moment, plus a written summary the learner can reopen after the session.' },
+  G5: { poor:'On-screen text only when something goes wrong, then nothing \u2014 no other channel, no way to review afterward.',
+        good:'A visual, audio, and haptic cue together in the moment, plus a written summary the learner can reopen after the session.' },
   G6: { poor:'A beautifully rendered valve \u2014 but it turns freely with no resistance, unlike the real one.',
         good:'A simple valve model that resists turning correctly and leaks if closed the wrong way.' },
   G7: { poor:'Presence and engagement only ever asked about in a survey after the session ends.',
@@ -1218,7 +1296,7 @@ const NEXT_STEPS = {
   G2: 'Book 30 minutes with two people who actually do this job and walk them through your task steps.',
   G3: 'Split the experience into named stages with a clear rule for moving between them.',
   G4: 'Rework the key interaction so the gesture physically resembles the real motion.',
-  G5: 'Add a post-session summary the learner can reopen after taking the headset off.',
+  G5: 'Combine visual, audio, and haptic feedback for the same event, and add a post-session summary the learner can reopen after taking the headset off.',
   G6: 'Move effort from visual polish to correct behaviour, physics, and consequences.',
   G7: 'Sketch the intended difficulty curve before building content, and track pace during sessions.',
   G8: 'Pick each learning goal and name the one thing you will observe as proof it was met.',
@@ -1251,15 +1329,15 @@ const STEPS = [
       {val:'educational',name:'Educational',desc:'Technical training, laboratories'},
       {val:'emergency',name:'Emergency response',desc:'Disaster response, evacuation'},
     ]},
-    {id:'skillType', kind:'profile', label:'Skill acquisition model', hint:'Dominant learning model', options:[
-      {val:'procedural',name:'Procedural',desc:'Defined sequences, performance criteria'},
-      {val:'perceptual',name:'Perceptual-motor',desc:'Physical skills, hand-eye coordination'},
-      {val:'decision',name:'Decision-making',desc:'Critical thinking, strategic choices'},
-      {val:'mixed',name:'Mixed',desc:'Combination of cognitive and physical'},
+    {id:'skillType', kind:'profile', label:'Skill acquisition model', hint:'Which best describes the skill being trained? (e.g. a checklist you follow vs. a tool you operate by feel)', options:[
+      {val:'procedural',name:'Procedural',desc:'Defined sequences, performance criteria \u2014 e.g. shutting down a machine in a fixed order'},
+      {val:'perceptual',name:'Perceptual-motor',desc:'Physical skills, hand-eye coordination \u2014 e.g. suturing, welding, precise tool handling'},
+      {val:'decision',name:'Decision-making',desc:'Critical thinking, strategic choices \u2014 e.g. triage, diagnosing a fault before acting'},
+      {val:'mixed',name:'Mixed',desc:'A combination of the above \u2014 true of most real-world tasks'},
     ]},
-    {id:'objectivesDeclared', kind:'diagnostic', guideline:'G1', label:'Learning objectives declared?', cols:2,
+    {id:'objectivesDeclared', kind:'diagnostic', guideline:'G1', label:'Will learning objectives be declared?', cols:2,
       hint:'Have explicit, observable learning objectives been written down for this training?',
-      evidence:'In the 20 published studies we reviewed, 17 (85%) skipped this step entirely — jumping straight into building without writing down what learners should actually be able to do.',
+      evidence:'Write down what the learner should be able to do before deciding on any technology — without it, there is no way to check afterward whether the training actually worked.',
       options:[
         {val:'yes',name:'Yes',desc:'Objectives are documented as observable behaviours'},
         {val:'no',name:'No / not yet',desc:'Objectives exist only informally, or not at all'},
@@ -1271,49 +1349,56 @@ const STEPS = [
       {val:'intermediate',name:'Intermediate',desc:'Developing experience'},
       {val:'expert',name:'Expert',desc:'High experience, refinement'},
     ]},
-    {id:'taskType', kind:'profile', label:'Task type', hint:'Primary nature of the training task', options:[
-      {val:'sequential',name:'Sequential',desc:'Step-by-step procedures, defined order'},
-      {val:'decision',name:'Decision-making',desc:'Critical thinking, strategic choices'},
-      {val:'manipulative',name:'Manipulative',desc:'Physical interaction with objects'},
+    {id:'taskType', kind:'profile', label:'Task type', hint:'Which best describes the dominant character of the task, even if it has more than one element?', options:[
+      {val:'sequential',name:'Sequential',desc:'A checklist that must be followed in a fixed order'},
+      {val:'decision',name:'Decision-making',desc:'Diagnosing a situation or choosing between options before acting'},
+      {val:'manipulative',name:'Manipulative',desc:'Assembling, adjusting, or operating equipment by hand'},
     ]},
-    {id:'taskValidated', kind:'diagnostic', guideline:'G2', label:'Task validated with domain practitioners?', cols:2,
+    {id:'taskValidated', kind:'diagnostic', guideline:'G2', label:'Will the task be validated with domain practitioners?', cols:2,
       hint:'Has the task structure been checked against real professional practice by domain experts?',
-      evidence:'18 of the 20 studies we reviewed defined task steps, but more than 70% did so by copying the look of the real task without checking the logic with real practitioners.',
+      evidence:'Validate the task sequence with real practitioners, not documentation alone — copying how a task looks without checking its logic is how training ends up teaching the wrong thing, convincingly.',
       options:[
         {val:'yes',name:'Yes',desc:'Practitioners reviewed and validated the task structure'},
         {val:'no',name:'No / not yet',desc:'Task is designed from documentation or assumption only'},
       ]},
   ]},
   {title:'Step 3 — Temporal progression', sub:'Scaffolding and session structure (G3)', fields:[
-    {id:'complexity', kind:'profile', label:'Cognitive complexity', hint:'Overall cognitive load of the task', cols:3, options:[
-      {val:'low',name:'Low',desc:'Few elements, easy to automate'},
-      {val:'medium',name:'Medium',desc:'Multiple elements, moderate decisions'},
-      {val:'high',name:'High',desc:'Many elements, high demand'},
+    {id:'complexity', kind:'profile', label:'Cognitive complexity', hint:'How much does the learner need to track and decide at once?', cols:3, options:[
+      {val:'low',name:'Low',desc:'A single action repeated the same way each time'},
+      {val:'medium',name:'Medium',desc:'Several steps where the order can change depending on conditions'},
+      {val:'high',name:'High',desc:'Monitoring multiple things while making time-pressured decisions'},
     ]},
     {id:'sessionStructure', kind:'diagnostic', guideline:'G3', label:'Single session or progressive stages?', cols:2,
-      hint:'Is the training a single static exposure, or structured across multiple sessions with increasing difficulty?',
-      evidence:'70% of the studies we reviewed offered a single, static session with no built-in progression — leaving pacing entirely up to whoever happened to be supervising.',
+      hint:'Is the training planned as a single static exposure, or structured across multiple sessions with increasing difficulty?',
+      evidence:'Introduce difficulty gradually, across stages — a single static exposure leaves pacing entirely up to whoever happens to be supervising.',
       options:[
         {val:'multi',name:'Progressive stages',desc:'Multiple sessions with a designed difficulty gradient'},
         {val:'single',name:'Single session',desc:'One static exposure, no built-in progression'},
       ]},
   ]},
-  {title:'Step 4 — Embodied interaction and feedback', sub:'Gesture correspondence and debriefing design (G4, G5)', fields:[
+  {title:'Step 4 — Embodied interaction and feedback', sub:'Gesture correspondence and multimodal feedback design (G4, G5)', fields:[
     {id:'interactionHW', kind:'profile', label:'Interaction hardware', hint:'Primary input method planned', options:[
       {val:'controllers',name:'Standard controllers',desc:'Button-mapped handheld controllers'},
       {val:'handtracking',name:'Hand tracking',desc:'Bare-hand gesture recognition'},
       {val:'haptic',name:'Haptic devices',desc:'Force-feedback or wearable haptics'},
     ]},
-    {id:'gestureCorrespondence', kind:'diagnostic', guideline:'G4', label:'Gestures correspond to the real task?', cols:2,
-      hint:'Do in-VR gestures physically resemble the real-world action (e.g. an actual turning motion), or are they abstracted to a generic button press regardless of hardware?',
-      evidence:'55% of the studies we reviewed used generic button presses instead of movements that resemble the real action — regardless of what hardware was used.',
+    {id:'gestureCorrespondence', kind:'diagnostic', guideline:'G4', label:'Will gestures be designed to correspond to the real task?', cols:2,
+      hint:'Are in-VR gestures designed to physically resemble the real-world action (e.g. an actual turning motion), or mapped to a generic button press regardless of hardware?',
+      evidence:'Design the gesture to physically resemble the real-world action, not a generic button press — the gesture itself is how motor memory forms; a button press builds no transferable skill.',
       options:[
         {val:'yes',name:'Direct correspondence',desc:'Gesture physically mirrors the real action'},
         {val:'no',name:'Abstracted / generic',desc:'Mapped to a generic button or trigger'},
       ]},
+    {id:'feedbackChannels', kind:'diagnostic', guideline:'G5', label:'Will feedback combine multiple channels?', cols:2,
+      hint:'Is in-task feedback for an action or error planned to combine more than one channel — visual, audio, and, where possible, haptic — or limited to a single channel such as on-screen text?',
+      evidence:'Combine more than one feedback channel — visual, audio, and haptic together — a single channel, especially text, is easy to miss inside an immersive environment.',
+      options:[
+        {val:'yes',name:'Multiple channels',desc:'Visual, audio, and/or haptic combined for the same event'},
+        {val:'no',name:'Single channel',desc:'Feedback relies on one channel only, typically text'},
+      ]},
     {id:'debriefPlanned', kind:'diagnostic', guideline:'G5', label:'Post-task debriefing planned?', cols:2,
-      hint:'Beyond immediate in-task feedback, is there a structured, revisitable report after each session?',
-      evidence:'45% of the studies we reviewed gave learners only an immediate alert in the moment, with nothing to review afterward.',
+      hint:'Beyond immediate in-task feedback, is a structured, revisitable report planned after each session?',
+      evidence:'Plan a structured debrief the learner can revisit after the session, not just an in-the-moment alert — feedback that disappears the moment the headset comes off cannot be reflected on.',
       options:[
         {val:'yes',name:'Yes',desc:'A structured, accessible debrief report is planned'},
         {val:'no',name:'No / not yet',desc:'Only immediate in-task feedback is planned'},
@@ -1321,8 +1406,8 @@ const STEPS = [
   ]},
   {title:'Step 5 — Context realism and experience design', sub:'Functional realism and proactive experience targets (G6, G7)', fields:[
     {id:'realismPriority', kind:'diagnostic', guideline:'G6', label:'Realism priority', cols:2,
-      hint:'When these two compete for development time, which is prioritised?',
-      evidence:'60% of the studies we reviewed spent more effort on how things looked than on whether they behaved correctly.',
+      hint:'When these two compete for design effort, which is the priority?',
+      evidence:'Prioritise correct behaviour over visual polish — a beautifully rendered valve that turns with no resistance teaches the wrong physical expectation.',
       options:[
         {val:'functional',name:'Functional realism',desc:'Correct physics, rules, consequences of actions'},
         {val:'visual',name:'Visual fidelity',desc:'Photorealistic appearance, aesthetic detail'},
@@ -1332,28 +1417,22 @@ const STEPS = [
       {val:'medium',name:'Medium immersion',desc:'Enhanced graphics, moderate feedback'},
       {val:'high',name:'High immersion',desc:'Photorealistic, full haptic feedback'},
     ]},
-    {id:'experienceProactive', kind:'diagnostic', guideline:'G7', label:'Experience designed proactively?', cols:2,
-      hint:'Are presence, flow, and motivation designed as explicit targets, or only measured afterward?',
-      evidence:'65% of the studies we reviewed only checked engagement and presence with a survey afterward, rather than designing for it from the start.',
+    {id:'experienceProactive', kind:'diagnostic', guideline:'G7', label:'Will experience be designed proactively?', cols:2,
+      hint:'Are presence, flow, and motivation designed in from the start — for example, adjusting pacing or difficulty in real time to keep the learner challenged but not overwhelmed — or only checked afterward with a survey?',
+      evidence:'Design for engagement and flow as an explicit target from the start — measuring it only afterward means there is nothing left to do about it.',
       options:[
         {val:'yes',name:'Yes',desc:'Presence/flow conditions are designed in from the start'},
         {val:'no',name:'No / measured after',desc:'These are only assessed via post-test questionnaires'},
       ]},
   ]},
   {title:'Step 6 — Evaluation articulation', sub:'The central Cycle 1 finding: design–evaluation coupling (G8)', fields:[
-    {id:'evalPlanned', kind:'diagnostic', guideline:'G8', label:'Evaluation strategy already planned?', cols:2,
-      hint:'Is there a defined plan for how this training will be assessed?',
-      evidence:'Half of the studies we reviewed added evaluation as an afterthought, disconnected from what was actually being taught.',
+    {id:'evalDesign', kind:'diagnostic', guideline:'G8', label:'How will evaluation connect to objectives?', cols:3,
+      hint:'As you plan evaluation, will each metric trace back to a learning objective from Step 1, will metrics be defined on their own, or is evaluation simply not planned yet at this stage?',
+      evidence:'Every evaluation metric should trace back to a specific learning objective — otherwise you end up measuring something, but not necessarily what you meant to teach.',
       options:[
-        {val:'yes',name:'Yes',desc:'An evaluation approach has been defined'},
-        {val:'no',name:'No / not yet',desc:'Evaluation has not been planned yet'},
-      ]},
-    {id:'evalLinked', kind:'diagnostic', guideline:'G8', label:'Evaluation linked to learning objectives?', cols:2,
-      hint:'If an evaluation plan exists, is each metric explicitly traceable back to a learning objective from Step 1?',
-      evidence:'This connection between evaluation and learning goals is the single biggest gap this framework was built to close.',
-      options:[
-        {val:'yes',name:'Yes',desc:'Each metric maps to a specific competency claim'},
-        {val:'no',name:'No / unclear',desc:'Metrics exist independently of stated objectives'},
+        {val:'linked',name:'Explicitly linked',desc:'Each metric will map to a specific competency claim from Step 1'},
+        {val:'independent',name:'Defined separately',desc:'Metrics will exist, but not tied back to the stated objectives'},
+        {val:'none',name:'Not planned yet',desc:'A perfectly normal place to be this early \u2014 evaluation just hasn\u2019t been decided on yet'},
       ]},
   ]},
 ];
@@ -1438,8 +1517,8 @@ const GUIDELINES = {
     exemplar:{study:'Haj-Bolouri et al. (2024)', note:'one of only 4 corpus studies (of 20) with evaluation criteria explicitly derived from design decisions'},
     prescription:'Solder every evaluation metric to the training components from the framing phase (G1) — traceable to a specific competence claim.',
     action:(a)=>{let p=[];
-      if(a.evalPlanned==='no'){p.push('⚑ For every learning goal you wrote down in Step 1, decide what you\u2019ll actually observe and record as proof the learner achieved it. Every piece of data you collect — a completion time, a mistake, a decision made — should clearly connect back to one of those goals; if you can\u2019t say which goal it\u2019s evidence for, it\u2019s probably not worth collecting.');}
-      else if(a.evalLinked==='no'){p.push('⚑ You already have metrics, but they\u2019re not yet tied to specific goals — go back through your list and connect each one to a learning goal from Step 1. Anything that can\u2019t be connected is adding noise without telling you whether learning actually happened.');}
+      if(a.evalDesign==='none'){p.push('⚑ For every learning goal you wrote down in Step 1, decide what you\u2019ll actually observe and record as proof the learner achieved it. Every piece of data you collect — a completion time, a mistake, a decision made — should clearly connect back to one of those goals; if you can\u2019t say which goal it\u2019s evidence for, it\u2019s probably not worth collecting.');}
+      else if(a.evalDesign==='independent'){p.push('⚑ You already have metrics, but they\u2019re not yet tied to specific goals — go back through your list and connect each one to a learning goal from Step 1. Anything that can\u2019t be connected is adding noise without telling you whether learning actually happened.');}
       else{p.push('Evaluation is planned and clearly tied to your learning goals — this is the target state. Keep that connection documented and up to date as the training evolves, so the two don\u2019t drift apart.');}
       if(a.skillType==='procedural')p.push('For procedural skills: track not just pass/fail but the type of mistake (skipped a step, wrong order, imprecise action) — this makes it much easier to know what to fix.');
       if(a.skillType==='decision')p.push('For decision-making skills: record the path the learner chose alongside the best possible path, so you can assess judgment quality, not just the final outcome.');
@@ -1458,16 +1537,18 @@ const GUIDELINES = {
 // diagnosis scrutable rather than a black box (explainable-recommendation practice).
 function whyFlagged(a, id){
   const t = {
-    G1: a.objectivesDeclared==='no' && ['Learning objectives declared?','No / not yet'],
-    G2: a.taskValidated==='no' && ['Task validated with domain practitioners?','No / not yet'],
+    G1: a.objectivesDeclared==='no' && ['Will learning objectives be declared?','No / not yet'],
+    G2: a.taskValidated==='no' && ['Will the task be validated with domain practitioners?','No / not yet'],
     G3: a.sessionStructure==='single' && ['Single session or progressive stages?','Single session'],
-    G4: a.gestureCorrespondence==='no' && ['Gestures correspond to the real task?','Abstracted / generic'],
-    G5: a.debriefPlanned==='no' && ['Post-task debriefing planned?','No / not yet'],
+    G4: a.gestureCorrespondence==='no' && ['Will gestures be designed to correspond to the real task?','Abstracted / generic'],
+    G5: a.feedbackChannels==='no'
+          ? ['Will feedback combine multiple channels?','Single channel']
+          : (a.debriefPlanned==='no' ? ['Post-task debriefing planned?','No / not yet'] : false),
     G6: a.realismPriority==='visual' && ['Realism priority','Visual fidelity'],
-    G7: a.experienceProactive==='no' && ['Experience designed proactively?','No / measured after'],
-    G8: a.evalPlanned==='no'
-          ? ['Evaluation strategy already planned?','No / not yet']
-          : (a.evalLinked==='no' ? ['Evaluation linked to learning objectives?','No / unclear'] : false),
+    G7: a.experienceProactive==='no' && ['Will experience be designed proactively?','No / measured after'],
+    G8: a.evalDesign==='none'
+          ? ['How will evaluation connect to objectives?','Not planned yet']
+          : (a.evalDesign==='independent' ? ['How will evaluation connect to objectives?','Defined separately'] : false),
   }[id];
   return t || null;
 }
@@ -1478,10 +1559,10 @@ function computeFlags(a){
     G2: a.taskValidated==='no',
     G3: a.sessionStructure==='single',
     G4: a.gestureCorrespondence==='no',
-    G5: a.debriefPlanned==='no',
+    G5: a.feedbackChannels==='no' || a.debriefPlanned==='no',
     G6: a.realismPriority==='visual',
     G7: a.experienceProactive==='no',
-    G8: a.evalPlanned==='no' || a.evalLinked==='no',
+    G8: a.evalDesign==='none' || a.evalDesign==='independent',
   };
 }
 
@@ -1489,14 +1570,18 @@ function priorityScore(a,id){
   const base = GAP[id].pct;
   const flags = computeFlags(a);
   if (flags[id]) return Math.min(100, base + 12);
-  return Math.max(20, base - 25);
+  // Not flagged: score must stay safely below the lowest possible flagged score (57),
+  // so "worth reviewing" always outranks "on track" regardless of the guideline's
+  // corpus-wide prevalence. Higher-prevalence guidelines still edge out lower ones
+  // within this band, as a mild "keep an eye on this anyway" signal.
+  return Math.min(45, Math.max(10, base - 40));
 }
 
 function isFlagged(a,id){
   return !!computeFlags(a)[id];
 }
 
-let state={screen:'home',step:0,data:{},error:'',showOnlyFlagged:false};
+let state={screen:'home',step:0,data:{},error:'',showOnlyFlagged:false,resultsView:'dashboard',guidedIndex:0};
 
 // ── Full design brief: everything on one page, worksheets inline, print-ready.
 // This is the deliverable a designer hands to their team — the worksheets are
@@ -1664,8 +1749,12 @@ function editStep(i){
 
 // ── Worksheet modal: details-on-demand so the results page stays scannable ──
 let _lastFocused = null;
+let _worksheetOpenedFrom = null; // guideline id, if the worksheet was opened from its detail modal
 
 function openWorksheet(id){
+  const gdHost = document.getElementById('gdHost');
+  _worksheetOpenedFrom = gdHost ? id : null;
+  if(gdHost){ closeGuidelineDetail(); }
   const w = WORKSHEETS[id];
   const g = GUIDELINES[id];
   if(!w) return;
@@ -1682,6 +1771,7 @@ function openWorksheet(id){
   <div class="ws-backdrop" onclick="if(event.target===this)closeWorksheet()">
     <div class="ws-modal" role="dialog" aria-modal="true" aria-labelledby="ws-title">
       <div class="ws-head">
+        ${_worksheetOpenedFrom?`<button class="ws-back" onclick="backToGuidelineDetail()" aria-label="Back to ${id} details">&larr; Back</button>`:''}
         <div>
           <div class="ws-eyebrow">${id} — ${g.name}</div>
           <h2 id="ws-title">${w.title}</h2>
@@ -1770,7 +1860,17 @@ function closeWorksheet(){
   if(host) host.remove();
   document.body.style.overflow = '';
   document.removeEventListener('keydown', _wsKeydown);
+  _worksheetOpenedFrom = null;
   if(_lastFocused && _lastFocused.focus) _lastFocused.focus();
+}
+function backToGuidelineDetail(){
+  const id = _worksheetOpenedFrom;
+  const host = document.getElementById('wsHost');
+  if(host) host.remove();
+  document.body.style.overflow = '';
+  document.removeEventListener('keydown', _wsKeydown);
+  _worksheetOpenedFrom = null;
+  if(id) openGuidelineDetail(id);
 }
 
 // Tab-separated so it pastes straight into Excel / Sheets as real columns
@@ -1795,7 +1895,72 @@ function copyWorksheet(id){
   });
 }
 
-function setFilter(val){ state.showOnlyFlagged = val; render(); }
+function openGuidelineDetail(id){
+  const scored = getScoredGuidelines(state.data);
+  const g = scored.find(x=>x.id===id);
+  if(!g) return;
+  _lastFocused = document.activeElement;
+  const html = `
+  <div class="ws-backdrop" onclick="if(event.target===this)closeGuidelineDetail()">
+    <div class="ws-modal" role="dialog" aria-modal="true" aria-labelledby="gd-title">
+      <div class="ws-head">
+        <div>
+          <div class="ws-eyebrow">${id} &middot; ${g.type}</div>
+          <h2 id="gd-title">${g.name}</h2>
+        </div>
+        <button class="ws-close" onclick="closeGuidelineDetail()" aria-label="Close">&times;</button>
+      </div>
+      <div class="ws-body">
+        ${renderGuidelineCardBody(g, state.data, {openDetails:true})}
+      </div>
+      <div class="ws-foot">
+        <button class="btn" onclick="closeGuidelineDetail()">Close</button>
+      </div>
+    </div>
+  </div>`;
+  const host = document.createElement('div');
+  host.id = 'gdHost';
+  host.innerHTML = html;
+  document.body.appendChild(host);
+  document.body.style.overflow = 'hidden';
+  const closeBtn = host.querySelector('.ws-close');
+  if(closeBtn) closeBtn.focus();
+  document.addEventListener('keydown', _gdKeydown);
+}
+function _gdKeydown(e){
+  if(e.key === 'Escape'){ closeGuidelineDetail(); return; }
+  if(e.key !== 'Tab') return;
+  const modal = document.querySelector('#gdHost .ws-modal');
+  if(!modal) return;
+  const f = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  if(!f.length) return;
+  const first = f[0], last = f[f.length-1];
+  if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+}
+function closeGuidelineDetail(){
+  const host = document.getElementById('gdHost');
+  if(host) host.remove();
+  document.body.style.overflow = '';
+  document.removeEventListener('keydown', _gdKeydown);
+  if(_lastFocused && _lastFocused.focus) _lastFocused.focus();
+}
+function severityTier(g){
+  if(!g.flagged) return 'ok';
+  return g.score>=75 ? 'crit' : 'mod';
+}
+
+function setFilter(val){ state.showOnlyFlagged = val; state.guidedIndex = 0; render(); }
+function setResultsView(mode){ state.resultsView = mode; state.guidedIndex = 0; render(); }
+function guidedNav(delta, max){ state.guidedIndex = Math.max(0, Math.min(max-1, state.guidedIndex+delta)); render();
+  requestAnimationFrame(()=>{ const el=document.querySelector('.guided-panel'); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); }); }
+
+function getScoredGuidelines(d){
+  const ids=Object.keys(GUIDELINES);
+  return ids.map(id=>({id,...GUIDELINES[id],gap:GAP[id],action:GUIDELINES[id].action(d),
+    score:priorityScore(d,id),flagged:isFlagged(d,id),iconBg:ICON_COLORS[id].bg,iconFg:ICON_COLORS[id].fg,nextStep:NEXT_STEPS[id],why:whyFlagged(d,id)}))
+    .sort((a,b)=>b.score-a.score);
+}
 
 // Jump from the overview list to a specific guideline card
 function jumpTo(id){
@@ -1803,9 +1968,16 @@ function jumpTo(id){
     const g = Object.keys(GUIDELINES).find(k=>k===id);
     if(g && !isFlagged(state.data,id)){ state.showOnlyFlagged=false; render(); }
   }
+  if(state.resultsView==='dashboard'){
+    openGuidelineDetail(id);
+    return;
+  }
+  render();
   requestAnimationFrame(()=>{
     const el = document.getElementById('card-'+id);
     if(!el) return;
+    const details = document.getElementById('details-'+id);
+    if(details) details.open = true;
     el.scrollIntoView({behavior:'smooth', block:'start'});
     el.classList.add('just-jumped');
     setTimeout(()=>el.classList.remove('just-jumped'), 1600);
@@ -1833,19 +2005,96 @@ function render(){
   if(state.screen==='results'){r.innerHTML=renderResults();window.scrollTo(0,0);setupInViewObserver();return;}
 }
 
+// Plain-language explanation of each guideline, with a concrete worked example —
+// written for someone who has not yet taken the assessment, so no personalisation,
+// scores, or worksheet links here. Same source text as the SAM's Guideline_Narratives sheet.
+const GUIDELINE_INTRO = {
+  G1: 'Before designing any screen, it is necessary to establish clearly what the learner should be able to do by the end of the training, and that objective must be tied to how it will later be assessed. In practice, many VR training programs develop in the reverse order: the technological experience is decided first, and the learning objective is fitted in afterward, if it is defined with any clarity at all. G1 proposes reversing that order.',
+  G2: 'Training should be built around the tasks people actually perform in their work, not around what the design team assumes they do. If the training concerns replacing an industrial filter, the sequence of steps should come from observing and interviewing the technicians who carry it out daily, not solely from existing procedural documentation.',
+  G3: 'Difficulty should not be introduced all at once, because the capacity to process new information is limited. If the training involves closing an emergency valve, it is best to practice that single action first, without time pressure. Only once it becomes automatic is a second valve introduced, and only at the end is the pressure of a sounding alarm added. Presenting the full scenario from the outset is one of the most common causes of cognitive overload and dropout.',
+  G4: 'In VR the body can perform the action itself, not merely trigger it with a button, and that action needs to respond with the same physical coherence it would have in the real world. If the training involves tightening a screw, the person should perform the tightening motion with their hand, feeling the resistance increase as the screw tightens, rather than simply pressing a button for the system to do it on their behalf.',
+  G5: 'When the person acts correctly or incorrectly, the system should communicate this through more than one channel at once: visual, auditory, and, where possible, haptic. A single channel, such as on-screen text, reinforces learning far less effectively. Communicating the error, however, is not sufficient: the person needs to understand why the mistake occurred, and a brief moment of guided reflection proves more effective than a simple signal that something went wrong.',
+  G6: 'Photorealistic visual fidelity is not the determining factor. What matters is that machines, tools, and processes behave as they would in reality: that a valve offers the correct resistance, that an alarm activates at the right moment. Prioritising function over appearance is what allows what was learned to transfer to the real context.',
+  G7: 'A person\'s engagement with the experience is built deliberately. If they complete a maintenance task quickly, the system can introduce a second, simultaneous fault to keep them challenged; if they struggle, it is better to simplify the scenario rather than exceed their capacity. It also helps to offer real options for how to solve the problem, rather than imposing a single correct path.',
+  G8: 'The evaluation must measure exactly what G1 set out to teach, no more and no less. Each action within the training functions as a piece of evidence that, combined with the others, allows one to infer whether the person truly masters the task \u2014 closer to building a case than to taking a single snapshot at the end.',
+};
+
+function openGuidelineIntro(id){
+  const g = GUIDELINES[id];
+  const diagram = DIAGRAMS[id];
+  _lastFocused = document.activeElement;
+  const html = `
+  <div class="ws-backdrop" onclick="if(event.target===this)closeGuidelineIntro()">
+    <div class="ws-modal" role="dialog" aria-modal="true" aria-labelledby="gi-title">
+      <div class="ws-head">
+        <div>
+          <div class="ws-eyebrow">${id} &middot; ${g.type}</div>
+          <h2 id="gi-title">${g.name}</h2>
+        </div>
+        <button class="ws-close" onclick="closeGuidelineIntro()" aria-label="Close">&times;</button>
+      </div>
+      <div class="ws-body">
+        <p class="gi-text">${GUIDELINE_INTRO[id]}</p>
+        ${diagram?`<div class="g-diagram">${diagram.svg}<div class="g-diagram-caption">${diagram.caption}</div></div>`:''}
+      </div>
+      <div class="ws-foot">
+        <button class="btn" onclick="closeGuidelineIntro()">Close</button>
+        <button class="btn btn-primary" onclick="closeGuidelineIntro();startAssessment();">Start the assessment →</button>
+      </div>
+    </div>
+  </div>`;
+  const host = document.createElement('div');
+  host.id = 'giHost';
+  host.innerHTML = html;
+  document.body.appendChild(host);
+  document.body.style.overflow = 'hidden';
+  const closeBtn = host.querySelector('.ws-close');
+  if(closeBtn) closeBtn.focus();
+  document.addEventListener('keydown', _giKeydown);
+}
+function _giKeydown(e){
+  if(e.key === 'Escape'){ closeGuidelineIntro(); return; }
+  if(e.key !== 'Tab') return;
+  const modal = document.querySelector('#giHost .ws-modal');
+  if(!modal) return;
+  const f = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  if(!f.length) return;
+  const first = f[0], last = f[f.length-1];
+  if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+}
+function closeGuidelineIntro(){
+  const host = document.getElementById('giHost');
+  if(host) host.remove();
+  document.body.style.overflow = '';
+  document.removeEventListener('keydown', _giKeydown);
+  if(_lastFocused && _lastFocused.focus) _lastFocused.focus();
+}
+
 function renderHome(){
   const p = state.participant || {};
-  return `<div class="home-grid">
-    <div class="home-card"><span class="icon">&#9670;</span><h3>Framing & foundation</h3><p>Objectives, task validation (G1, G2)</p></div>
-    <div class="home-card"><span class="icon">&#9679;</span><h3>Progression & interaction</h3><p>Scaffolding, embodiment, feedback (G3–G5)</p></div>
-    <div class="home-card"><span class="icon">&#9650;</span><h3>Context & experience</h3><p>Realism, presence design (G6, G7)</p></div>
-    <div class="home-card"><span class="icon">&#9632;</span><h3>Evaluation articulation</h3><p>Design–evaluation traceability (G8)</p></div>
+  return `<div class="home-intent">
+    <strong>What this tool is for:</strong> it's meant to be used from the start of a VR training
+    project, while the key decisions — objectives, task, interaction, feedback — are still open.
+    Each question asks what you're planning to do, tracing back to a specific, named gap found
+    across 20 peer-reviewed studies on VR training design. If a decision has already been made,
+    answer with what was decided; nothing here requires a working build to answer.
+  </div>
+  <div class="home-guidelines">
+    <button class="gl-row" onclick="openGuidelineIntro('G1')"><span class="gl-tag">G1</span><b>Training Framing</b> — define what the learner should be able to do, before any technology decision is made.<span class="gl-more" aria-hidden="true">&rsaquo;</span></button>
+    <button class="gl-row" onclick="openGuidelineIntro('G2')"><span class="gl-tag">G2</span><b>Task-Centred Structure</b> — base the task on how practitioners actually work, not on assumption or documentation alone.<span class="gl-more" aria-hidden="true">&rsaquo;</span></button>
+    <button class="gl-row" onclick="openGuidelineIntro('G3')"><span class="gl-tag">G3</span><b>Temporal Progression</b> — introduce difficulty gradually across stages, not all at once.<span class="gl-more" aria-hidden="true">&rsaquo;</span></button>
+    <button class="gl-row" onclick="openGuidelineIntro('G4')"><span class="gl-tag">G4</span><b>Embodied Interaction</b> — make in-VR gestures physically resemble the real-world action being trained.<span class="gl-more" aria-hidden="true">&rsaquo;</span></button>
+    <button class="gl-row" onclick="openGuidelineIntro('G5')"><span class="gl-tag">G5</span><b>Multimodal Feedback</b> — combine more than one feedback channel, and explain the error, not just flag it.<span class="gl-more" aria-hidden="true">&rsaquo;</span></button>
+    <button class="gl-row" onclick="openGuidelineIntro('G6')"><span class="gl-tag">G6</span><b>Contextual Functional Realism</b> — prioritise correct behaviour over visual polish.<span class="gl-more" aria-hidden="true">&rsaquo;</span></button>
+    <button class="gl-row" onclick="openGuidelineIntro('G7')"><span class="gl-tag">G7</span><b>Proactive Experiential Design</b> — design for engagement and flow as a target, not something only measured afterward.<span class="gl-more" aria-hidden="true">&rsaquo;</span></button>
+    <button class="gl-row" onclick="openGuidelineIntro('G8')"><span class="gl-tag">G8</span><b>Constructive Evaluation Articulation</b> — make sure every evaluation metric traces back to the original learning objective.<span class="gl-more" aria-hidden="true">&rsaquo;</span></button>
   </div>
   <div class="home-note">
     <strong>How this differs from a generic checklist:</strong> each diagnostic question
     directly probes a gap empirically identified in the Cycle 1 corpus (n=20 studies).
-    Your answers reveal which of the 8 known failure patterns — found in 45%–90% of the
-    literature — apply to your own plan, not just generic advice.
+    Your answers reveal which of these eight known failure patterns — found in 45%–90% of the
+    literature — apply to your own project, not just generic advice.
   </div>
   <div class="participant-panel">
     <h3>Before you begin <span class="p-optional">(optional — for workshop records)</span></h3>
@@ -1889,10 +2138,11 @@ function renderStep(){
   let h=`<div class="progress-label">Step ${state.step+1} of ${STEPS.length}</div>
   <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
   <div class="step-title">${s.title}</div>
-  <div class="step-sub">${s.sub}</div>`;
+  <div class="step-sub">${s.sub}</div>
+`;
   s.fields.forEach(f=>{
     h+=`<div class="field${f.kind==='diagnostic'?' diagnostic':''}">
-    <div class="field-label">${f.label}${f.kind==='diagnostic'?`<span class="field-tag">key question</span>`:''}</div>
+    <div class="field-label">${f.kind==='diagnostic'?`<span class="field-tag-guideline">${f.guideline}</span>`:''}${f.label}${f.kind==='diagnostic'?`<span class="field-tag">key question</span>`:''}</div>
     <div class="field-hint">${f.hint}</div>`;
     if(f.evidence)h+=`<div class="field-evidence">${f.evidence}</div>`;
     h+=`<div class="options" style="grid-template-columns:repeat(${f.cols||2},1fr)">`;
@@ -1915,7 +2165,8 @@ function renderStep(){
     ${allAnswered && state.step!==STEPS.length-1
       ? `<button class="btn btn-primary" onclick="backToResults()">Back to results →</button>`
       : `<button class="btn btn-primary" onclick="goNext()">${state.step===STEPS.length-1?'View diagnosis →':'Next →'}</button>`}
-  </div>`;
+  </div>
+  <div class="save-mid-row"><button class="save-mid-link" onclick="saveSession()">Save progress and continue later ⇩</button></div>`;
   return h;
 }
 
@@ -1928,8 +2179,9 @@ function renderDeps(g, d){
   const parts = [];
 
   if(openReqs.length){
+    const links = openReqs.map(r=>`<a href="#" class="g-dep-link" onclick="jumpTo('${r}');return false;">${r}</a>`).join(' and ');
     parts.push(`<div class="g-dep-warn">
-      <strong>Settle ${openReqs.join(' and ')} first.</strong>
+      <strong>Settle ${links} first.</strong>
       ${openReqs.length===1?'It is':'They are'} also flagged, and ${g.id} depends on ${openReqs.length===1?'it':'them'} —
       decisions made here may need redoing once ${openReqs.length===1?'it changes':'they change'}.
     </div>`);
@@ -1944,12 +2196,47 @@ function renderDeps(g, d){
   return parts.join('');
 }
 
+function renderGuidelineCardBody(g, d, opts){
+  opts = opts || {};
+  const ex = EXAMPLES[g.id];
+  const diagram = DIAGRAMS[g.id];
+  return `<div class="g-header">
+        <span class="g-icon" style="background:${g.iconBg};color:${g.iconFg}">${ICONS[g.id]}</span>
+        <div class="g-header-text">
+          <div><span class="g-badge ${g.type.toLowerCase()}">${g.type}</span> <span class="g-name">${g.id} — ${g.name}</span></div>
+        </div>
+        ${g.flagged?`<span class="g-flag">⚑ worth reviewing</span>`:''}
+      </div>
+      <p class="g-prescription">${g.prescription}</p>
+      ${g.why?`<div class="g-why"><strong>Why this is flagged for you:</strong> you answered “${g.why[1]}” to “${g.why[0]}”.</div>`:''}
+      ${renderDeps(g, d)}
+      <details class="g-details" id="details-${g.id}"${opts.openDetails?' open':''}>
+        <summary>How to fix this <span class="g-details-sub">— pattern, steps, worksheet, and pitfalls</span></summary>
+        ${diagram?`<div class="g-diagram">${diagram.svg}<div class="g-diagram-caption">${diagram.caption}</div></div>`:''}
+        <div class="g-action">
+          <span class="g-action-label">How to put this into practice</span>
+          ${g.action}
+        </div>
+        <button class="ws-open" onclick="openWorksheet('${g.id}')">
+          <span class="ws-open-icon" aria-hidden="true">▤</span>
+          <span><strong>Open the ${WORKSHEETS[g.id].title}</strong><br><span class="ws-open-sub">Worked example + blank template you can copy into a spreadsheet</span></span>
+          <span class="ws-open-arrow" aria-hidden="true">→</span>
+        </button>
+        <div class="g-example-row">
+          <div class="g-example poor"><div class="g-example-label">✗ Common pitfall</div>${ex.poor}</div>
+          <div class="g-example good"><div class="g-example-label">✓ Better approach</div>${ex.good}</div>
+        </div>
+        <div class="g-footer">
+          <strong>Research grounding:</strong> ${g.theory} &nbsp;·&nbsp;
+          <strong>Seen working well in:</strong> ${g.exemplar.study} &nbsp;·&nbsp;
+          <strong>How common this gap is:</strong> ${g.gap.pct}% of the 20 studies we reviewed
+        </div>
+      </details>`;
+}
+
 function renderResults(){
   const d=state.data;
-  const ids=Object.keys(GUIDELINES);
-  const scored=ids.map(id=>({id,...GUIDELINES[id],gap:GAP[id],action:GUIDELINES[id].action(d),
-    score:priorityScore(d,id),flagged:isFlagged(d,id),iconBg:ICON_COLORS[id].bg,iconFg:ICON_COLORS[id].fg,nextStep:NEXT_STEPS[id],why:whyFlagged(d,id)}))
-    .sort((a,b)=>b.score-a.score);
+  const scored=getScoredGuidelines(d);
 
   const flaggedCount = scored.filter(g=>g.flagged).length;
 
@@ -2025,47 +2312,47 @@ function renderResults(){
   <div class="filter-row">
     <button class="chip${state.showOnlyFlagged?'':' active'}" aria-pressed="${!state.showOnlyFlagged}" onclick="setFilter(false)">Show all 8</button>
     <button class="chip${state.showOnlyFlagged?' active':''}" aria-pressed="${state.showOnlyFlagged}" onclick="setFilter(true)">Show only what needs attention</button>
+  </div>
+  <div class="filter-row view-row">
+    <button class="chip${state.resultsView==='dashboard'?' active':''}" aria-pressed="${state.resultsView==='dashboard'}" onclick="setResultsView('dashboard')">&#9638; Dashboard</button>
+    <button class="chip${state.resultsView==='overview'?' active':''}" aria-pressed="${state.resultsView==='overview'}" onclick="setResultsView('overview')">&#9776; Overview — see all</button>
   </div>`;
   const cardsToShow = state.showOnlyFlagged ? scored.filter(g=>g.flagged) : scored;
-  cardsToShow.forEach(g=>{
-    const ex = EXAMPLES[g.id];
-    const diagram = DIAGRAMS[g.id];
-    h+=`<div class="g-card${g.flagged?' flagged':''}" id="card-${g.id}">
-      <div class="g-header">
-        <span class="g-icon" style="background:${g.iconBg};color:${g.iconFg}">${ICONS[g.id]}</span>
-        <div class="g-header-text">
-          <div><span class="g-badge ${g.type.toLowerCase()}">${g.type}</span> <span class="g-name">${g.id} — ${g.name}</span></div>
+
+  if(cardsToShow.length===0){
+    h+=`<p class="guided-empty">Nothing to show with the current filter — try “Show all 8”.</p></div>`;
+  } else if(state.resultsView==='dashboard'){
+    h+=`<div class="gd-legend">
+      <span><span class="gd-legend-dot" style="background:#d94f4f"></span>Critical</span>
+      <span><span class="gd-legend-dot" style="background:#d99a2b"></span>Worth reviewing</span>
+      <span><span class="gd-legend-dot" style="background:#3f9153"></span>On track</span>
+      <span style="color:#bbb">&middot; click a tile for the full picture</span>
+    </div>
+    <div class="gd-grid">`;
+    cardsToShow.forEach(g=>{
+      const tier = severityTier(g);
+      const tierLabel = tier==='crit'?'Critical':tier==='mod'?'Worth reviewing':'On track';
+      h+=`<button class="gd-tile ${tier}" onclick="openGuidelineDetail('${g.id}')" aria-label="${g.id} — ${g.name}, ${tierLabel}. Open details.">
+        <div class="gd-tile-top">
+          <span class="gd-tile-icon" style="background:${g.iconBg};color:${g.iconFg}">${ICONS[g.id]}</span>
+          <span class="gd-tile-id">${g.id}</span>
+          <span class="gd-tile-sev">${tierLabel}</span>
         </div>
-        ${g.flagged?`<span class="g-flag">⚑ worth reviewing</span>`:''}
-      </div>
-      <p class="g-prescription">${g.prescription}</p>
-      ${g.why?`<div class="g-why"><strong>Why this is flagged for you:</strong> you answered “${g.why[1]}” to “${g.why[0]}”.</div>`:''}
-      ${renderDeps(g, d)}
-      ${diagram?`<div class="g-diagram">${diagram.svg}<div class="g-diagram-caption">${diagram.caption}</div></div>`:''}
-      <div class="g-action">
-        <span class="g-action-label">How to put this into practice</span>
-        ${g.action}
-      </div>
-      <button class="ws-open" onclick="openWorksheet('${g.id}')">
-        <span class="ws-open-icon" aria-hidden="true">▤</span>
-        <span><strong>Open the ${WORKSHEETS[g.id].title}</strong><br><span class="ws-open-sub">Worked example + blank template you can copy into a spreadsheet</span></span>
-        <span class="ws-open-arrow" aria-hidden="true">→</span>
-      </button>
-      <div class="g-example-row">
-        <div class="g-example poor"><div class="g-example-label">✗ Common pitfall</div>${ex.poor}</div>
-        <div class="g-example good"><div class="g-example-label">✓ Better approach</div>${ex.good}</div>
-      </div>
-      <div class="g-footer">
-        <strong>Research grounding:</strong> ${g.theory} &nbsp;·&nbsp;
-        <strong>Seen working well in:</strong> ${g.exemplar.study} &nbsp;·&nbsp;
-        <strong>How common this gap is:</strong> ${g.gap.pct}% of the 20 studies we reviewed
-      </div>
-    </div>`;
-  });
-  h+=`</div>`;
+        <div class="gd-tile-name">${g.name}</div>
+        <div class="gd-tile-snippet">${g.prescription}</div>
+        <div class="gd-tile-score">Priority ${g.score}/100</div>
+      </button>`;
+    });
+    h+=`</div></div>`;
+  } else {
+    cardsToShow.forEach(g=>{
+      h+=`<div class="g-card${g.flagged?' flagged':''}" id="card-${g.id}">${renderGuidelineCardBody(g, d, {})}</div>`;
+    });
+    h+=`</div>`;
+  }
 
   h+=`<details class="limits-panel">
-    <summary>Scope and limitations of this evidence base</summary>
+    <summary>Where this comes from, and what it doesn't cover yet</summary>
     <ul class="limits-list">${LIMITS.map(l=>`<li>${l}</li>`).join('')}</ul>
   </details>
   <div class="artifact-stamp">
